@@ -10,6 +10,7 @@ import { useState } from "react"
 
 export default function Page() {
   const [isActive, setIsActive] = useState(false);
+  const [fanSpeed, setFanSpeed] = useState(200);
 
   function FlipButton(){
     setIsActive(!isActive)
@@ -30,12 +31,33 @@ export default function Page() {
           <div className="flex gap-5">
             {(isActive == false) && <Button variant={"default"} className="bg-red-600 border border-white" onClick={FlipButton}>Av</Button> }
             {isActive && <Button variant={"default"} className="bg-green-600 border border-white" onClick={FlipButton}>På</Button>}
-            <Slider disabled={!isActive} defaultValue={[25]}></Slider>
+            <Slider disabled={!isActive} defaultValue={[200]} min={0} max={1000} value={[fanSpeed]} step={100} onValueChange={(value) => {
+              setFanSpeed(value[0]) // Set passLength to the value of the slider
+            }}></Slider>
 
-            <Input type="number" className="w-1/3" disabled={!isActive}></Input>
+            <Input type="number" value={fanSpeed} className="w-1/3" disabled={!isActive} min={0} max={1000} onChange={(e) => {
+              const value = e.target.value;
+
+              if(value === ""){ // If Box is empty
+                setFanSpeed(0);
+              }
+
+              const numVal = Number(value)
+              if(numVal<= 1000){ // If Number is smaller than the set value 
+                setFanSpeed(numVal)
+              }
+              else {
+                setFanSpeed(1000);
+              }
+            }}
+            onBlur={() => {
+              if(fanSpeed <= 20){setFanSpeed(20)}
+              if(fanSpeed > 1000){setFanSpeed(1000)}
+            }}
+            ></Input>
           </div>
-         
-          
+        
+          <Typography>{fanSpeed}</Typography>
         </Bubble>
       </Window>
     </div>
