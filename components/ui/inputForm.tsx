@@ -21,7 +21,7 @@ export default function InputForm(){
         </div>
         
         <div></div>
-        <Button variant={"outline"}>Logg inn</Button> 
+        <Button variant={"outline"} className="dark:text-white">Logg inn</Button> 
     </div>
     
         
