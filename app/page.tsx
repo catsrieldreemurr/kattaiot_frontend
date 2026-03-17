@@ -1,9 +1,6 @@
 import Bubble from "@/components/ui/bubble"
-import { Button } from "@/components/ui/button"
 import Fancontrol from "@/components/ui/fancontrol"
-import { Input } from "@/components/ui/input"
 import Navigator from "@/components/ui/pagebox"
-import { Slider } from "@/components/ui/slider"
 import Typography from "@/components/ui/typography"
 import Window from "@/components/ui/window"
 
