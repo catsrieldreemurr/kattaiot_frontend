@@ -1,24 +1,20 @@
-import Bubble from "@/components/ui/bubble"
-import Fancontrol from "@/components/ui/fancontrol"
-import Navigator from "@/components/ui/pagebox"
-import Typography from "@/components/ui/typography"
-import Window from "@/components/ui/window"
+import { Input } from "@/components/ui/input";
+import InputForm from "@/components/ui/inputForm";
+import Typography from "@/components/ui/typography";
+import Window from "@/components/ui/window";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Page() {
-  return (
-    <div className="sm:flex">
-      <Navigator></Navigator>
-      <Window>
-        <Bubble style="sm:w-1/3">
-          <Typography variant="h2" isBold isCentered>Fan-Control</Typography>
-          <div className="flex gap-5 justify-center">
-            <Typography isCentered>90℃</Typography>
-            <Typography isCentered>1000rpm</Typography>
-          </div>
+export default function Page(){
+    return (<Window>
+        <div className="flex flex-col justify-center items-center">
+            <Link href={"https://www.hamar-katedral.vgs.no/"}>
+                <Image src={"/hamar-katedralskoleWhite_png.png"} alt="Hamar Katedralskole" height={200} width={200}></Image>
+            </Link>
 
-          <Fancontrol></Fancontrol>
-        </Bubble>
-      </Window>
-    </div>
-  )
+            <InputForm></InputForm>
+        </div>
+        
+    </Window>
+    )
 }
